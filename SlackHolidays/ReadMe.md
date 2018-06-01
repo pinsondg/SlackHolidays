@@ -68,9 +68,9 @@ up in the week on Mondays at 9am. More features could be added in future release
 
 ## Built With
 
-* [Java] (https://java.com) - Software Development
+* [Java](https://java.com) - Software Development
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [Eclipse] (https://www.eclipse.org/downloads) - IDE
+* [Eclipse](https://www.eclipse.org/downloads) - IDE
 
 
 ## Authors
