@@ -6,8 +6,6 @@ the program has to be run on either a computer or a server. If the program is te
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 To get the project running, you will have to run it as a Maven project on either your server or personal computer.
 Because it is written in Java, it will run on any computer with the Java Virtual Machine installed. 
 
