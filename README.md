@@ -3,8 +3,9 @@
 This program finds the company holidays and notifies employees if there is a holiday coming up via slack. This program was
 written in Java using the simple-slack-api downloaded from https://github.com/Ullink/simple-slack-api.git. In order to work properly,
 the program has to be run on either a computer or a server. If the program is terminated, the bot will not respond in slack.
-The bot is currently running on a hoast computer in the Charlottsville Radiant Solutions office and will reply in their slack
-channel. It will eventually have to be uploaded to the cloud or another server and the creators are looking into that.
+The bot is currently running on a host computer in the Charlottsville Radiant Solutions office and will reply in their slack
+channel. It will eventually have to be uploaded to the cloud or another server and the creators are looking into that. We 
+are also looking into different customization options for the bot so it is easy for the user to customize their experience.
 
 ## Getting Started
 
