@@ -10,10 +10,21 @@ public class TimeActionListener implements TimeListener
 {
 	private SlackSession session;
 	
+	/**
+	 * Constructs a time listener.
+	 * 
+	 * @param session the slack session to post to
+	 */
 	public TimeActionListener( SlackSession session ) {
 		this.session = session;
 	}
 	
+	/**
+	 * Sends a message to the channel when called.
+	 * 
+	 * @param e the time sender
+	 * @param list the list of holidays to print out
+	 */
 	@Override
 	public void timeAction(TimeSender e, List<Holiday> list)
 	{

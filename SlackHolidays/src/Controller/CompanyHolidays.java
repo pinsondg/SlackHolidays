@@ -11,13 +11,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * A hash map of company holidays. To add more holidays you will have to hard code them in yourself.
+ * 
+ * @author interns
+ *
+ */
 public class CompanyHolidays extends HashMap<LocalDate, String> implements Serializable
 {
 
 	private int currentYear;
 	
 	/**
-	 * Default constructor for using the current year
+	 * Default constructor for using the current year.
 	 * @throws ParseException
 	 */
 	public CompanyHolidays() throws ParseException {
@@ -37,6 +43,11 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		setUpMap();
 	}
 
+	/**
+	 * Sets up the hash map.
+	 * 
+	 * @throws ParseException
+	 */
 	private void setUpMap() throws ParseException
 	{
 		LocalDate christmas = LocalDate.of(currentYear, 12, 25);
@@ -45,7 +56,7 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		LocalDate fourthOfJuly = LocalDate.of(currentYear, 7, 4);
 		LocalDate newYears = LocalDate.of(currentYear, 1, 1);
 		LocalDate laborDay = findLaborDay();
-		LocalDate veterensDay = ifOnWeekend(LocalDate.of(currentYear, 11, 12));
+		LocalDate veterensDay = (LocalDate.of(currentYear, 11, 12));
 		
 		this.put(newYears, "New Years");
 		this.put(fourthOfJuly, "Fourth of July");
@@ -53,7 +64,7 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		this.put(thanksgiving, "Thanksgiving");
 		this.put(christmas, "Christmas");
 		this.put(laborDay, "Labor Day");
-		this.put(veterensDay, "Holiday");
+		this.put(veterensDay, "Veterens Day");
 	}
 	
 	
@@ -74,6 +85,12 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		
 	}
 	
+	/**
+	 * Finds thanksgiving of the current year.
+	 * 
+	 * @return the date of thanksgiving.
+	 * @throws ParseException
+	 */
 	private LocalDate findThanksgiving() throws ParseException {
 
 		LocalDate firstNov = LocalDate.of(currentYear, 11, 1);
@@ -85,6 +102,11 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		return firstNov;
 	}
 	
+	/**
+	 * Finds labor day of the current year.
+	 * 
+	 * @return the date of labor day
+	 */
 	private LocalDate findLaborDay() {
 		LocalDate firstSept = LocalDate.of(currentYear, 9, 1);
 		while(!firstSept.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
@@ -93,6 +115,12 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		return firstSept;
 	}
 	
+	/**
+	 * Finds memorial day of the current year.
+	 * 
+	 * @return the date of memorial day
+	 * @throws ParseException
+	 */
 	private LocalDate findMemorialDay() throws ParseException {
 		LocalDate lastMay = LocalDate.of(currentYear, 5, 31);
 		lastMay = lastMay.with(TemporalAdjusters.lastInMonth(DayOfWeek.MONDAY));

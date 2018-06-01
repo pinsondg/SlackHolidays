@@ -52,6 +52,12 @@ public class HolidayFinder
 		this.cal = cal;
 	}
 
+	/**
+	 * Gets the holidays that are coming up in the next seven days.
+	 * 
+	 * @return a list of holidays coming up
+	 * @throws ParseException
+	 */
 	public List<Holiday> getUpcomingHolidays() throws ParseException
 	{
 		List<Holiday> list = new ArrayList<Holiday>();
@@ -76,6 +82,13 @@ public class HolidayFinder
 		return list;
 	}
 	
+	/**
+	 * Gets the holidays that are coming up in the next seven days.
+	 * 
+	 * @param day the day to start on
+	 * @return the list of holidays
+	 * @throws ParseException
+	 */
 	public List<Holiday> getUpcomingHolidays( LocalDate day ) throws ParseException
 	{
 		List<Holiday> list = new ArrayList<Holiday>();
@@ -100,6 +113,12 @@ public class HolidayFinder
 	}
 
 
+	/**
+	 * Gets the next holiday that is coming up.
+	 * 
+	 * @return the next holiday
+	 * @throws ParseException
+	 */
 	public Holiday getNextHoliday() throws ParseException
 	{
 		Holiday holiday = null;

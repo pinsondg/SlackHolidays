@@ -23,10 +23,17 @@ public class MessageSender implements TimeSender
 	private SlackSession session;
 	private HolidayFinder holidays;
 
+	/**
+	 * The constructor of the message sender class. The access token is the string beginning with
+	 * xoxb in quotes.
+	 * 
+	 * @throws InterruptedException thrown if the thread is interrupted
+	 * @throws ParseException
+	 */
 	public MessageSender() throws InterruptedException, ParseException
 	{
 		session = SlackSessionFactory.createWebSocketSlackSession(
-				"xoxb-5101990913-369659812307-AnEliRD09c9NmHUtle03iq8x");
+				"xoxb-5101990913-369659812307-AnEliRD09c9NmHUtle03iq8x");//put access token in the quotes
 		registeringAListener(session);
 		while (true)
 		{
@@ -155,6 +162,10 @@ public class MessageSender implements TimeSender
 	{
 		// first define the listener
 		SlackMessagePostedListener messagePostedListener = new SlackMessagePostedListener() {
+			
+			/**
+			 * Reacts to a message sent on a channel.
+			 */
 			@Override
 			public void onEvent(SlackMessagePosted event, SlackSession session)
 			{
@@ -171,6 +182,7 @@ public class MessageSender implements TimeSender
 				String messageContent = event.getMessageContent();
 				SlackUser messageSender = event.getSender();
 				messageContent = messageContent.toLowerCase();
+				//only reacts to messages with the words "next holiday"
 				if (messageContent.contains("next holiday")
 						&& !session.sessionPersona().getId().equals(messageSender.getId()))
 				{
@@ -194,6 +206,9 @@ public class MessageSender implements TimeSender
 		
 		SlackChannelJoinedListener slackChannelJoined = new SlackChannelJoinedListener() {
 
+			/**
+			 * Doesn't work for some reason.
+			 */
 			@Override
 			public void onEvent(SlackChannelJoined event, SlackSession session)
 			{

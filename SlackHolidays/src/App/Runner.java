@@ -3,6 +3,12 @@ import java.text.ParseException;
 
 import Controller.MessageSender;
 
+/**
+ * The entry point of the program.
+ * 
+ * @author interns
+ *
+ */
 public class Runner
 {
 
