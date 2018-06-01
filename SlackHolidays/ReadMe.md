@@ -37,7 +37,7 @@ http://maven.apache.org/download.html#Installation
 
 Also, to run the application you can just run the SlackHolidays.jar file found in the repo.
 
-To get this application to connect to an app in slack, you will first have to create a bot in the [Slack API Website] (https://api.slack.com). 
+To get this application to connect to an app in slack, you will first have to create a bot in the [Slack API Website](https://api.slack.com). 
 
 To create an app, click "Start Building" and then "Create a New App" (you may have to sign in to your slack account first").
 Give your new app a name and select what workspace you want it to be developed in. Now you will be on

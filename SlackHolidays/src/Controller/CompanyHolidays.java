@@ -57,6 +57,7 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		LocalDate newYears = LocalDate.of(currentYear, 1, 1);
 		LocalDate laborDay = findLaborDay();
 		LocalDate veterensDay = (LocalDate.of(currentYear, 11, 12));
+		LocalDate martainLuther = findMartinLutherKingDay();
 		
 		this.put(newYears, "New Years");
 		this.put(fourthOfJuly, "Fourth of July");
@@ -65,6 +66,7 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		this.put(christmas, "Christmas");
 		this.put(laborDay, "Labor Day");
 		this.put(veterensDay, "Veterens Day");
+		this.put(martainLuther, "Martain Luther King Day");
 	}
 	
 	
@@ -127,6 +129,21 @@ public class CompanyHolidays extends HashMap<LocalDate, String> implements Seria
 		return lastMay;
 	}
 	
+	/**
+	 * Finds martain luther king day.
+	 * 
+	 * @return the date of martain luther king day
+	 */
+	private LocalDate findMartinLutherKingDay() {
+		LocalDate firstMonday = LocalDate.of(currentYear, 1, 1);
+		if ( firstMonday.getDayOfWeek().equals(DayOfWeek.MONDAY) ) {
+			firstMonday = firstMonday.plus(2, ChronoUnit.WEEKS);
+		} else {
+			firstMonday = firstMonday.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+			firstMonday = firstMonday.plus(2, ChronoUnit.WEEKS);
+		}
+		return firstMonday;
+	}
 	/**
 	 * Given a holiday date it will determine if the holiday is on a weekend
 	 * and return the Monday if it is.
