@@ -86,6 +86,6 @@ public class Holiday
 	 */
 	@SuppressWarnings("deprecation")
 	public String toString() {
-		return name + ", " + date.getDayOfWeek().toString() + "," + date.getMonth() + "/" + date.getDayOfMonth() + "/" + date.getYear();
+		return name + ", " + date.getDayOfWeek().toString() + ", " + date.getMonth() + "/" + date.getDayOfMonth() + "/" + date.getYear();
 	}
 }
