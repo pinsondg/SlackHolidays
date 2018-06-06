@@ -76,5 +76,5 @@ up in the week on Mondays at 9am. More features could be added in future release
 
 ## Authors
 
-Daniel Pinson dpinson@radiantsolutions.com  Vamsi Yadav yyadav@radiantsolutions.com
+Daniel Pinson dpinson@radiantsolutions.com  Vamsi Yadav vamsi.yadav@radiantsolutions.com
 
