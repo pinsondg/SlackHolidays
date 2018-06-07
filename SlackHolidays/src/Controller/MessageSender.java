@@ -1,7 +1,7 @@
 package Controller;
-import java.awt.Event;
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ public class MessageSender implements TimeSender
 
 	private List<TimeActionListener> timeListeners;
 	private SlackSession session;
-	private HolidayFinder holidays;
+	private HolidayFinder finder;
 
 	/**
 	 * The constructor of the message sender class. The access token is the string beginning with
@@ -35,8 +35,15 @@ public class MessageSender implements TimeSender
 		session = SlackSessionFactory.createWebSocketSlackSession(
 				"xoxb-5101990913-369659812307-AnEliRD09c9NmHUtle03iq8x");//put access token in the quotes
 		registeringAListener(session);
+		int year = LocalDate.now().getYear();
+		finder = new HolidayFinder();
 		while (true)
 		{
+			//if the year changes create a new holiday finder for that year
+			if ( LocalDate.now().getYear() != year ) {
+				year = LocalDate.now().getYear();
+				finder = new HolidayFinder();				
+			}
 			run();
 		}
 
@@ -74,14 +81,7 @@ public class MessageSender implements TimeSender
 	 * @throws ParseException thrown if parse exception
 	 */
 	private List<Holiday> checkMonday() throws ParseException {
-		HolidayFinder finder = null;
 		List<Holiday> list = null;
-		try {
-			finder  = new HolidayFinder();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		boolean flag = false;
 		Calendar calendar = Calendar.getInstance();
 		if ( calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY 
@@ -169,15 +169,6 @@ public class MessageSender implements TimeSender
 			@Override
 			public void onEvent(SlackMessagePosted event, SlackSession session)
 			{
-				HolidayFinder holidayFinder = null;
-				try
-				{
-					holidayFinder = new HolidayFinder();
-				} catch (ParseException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				SlackChannel channelOnWhichMessageWasPosted = event.getChannel();
 				String messageContent = event.getMessageContent();
 				SlackUser messageSender = event.getSender();
@@ -188,7 +179,7 @@ public class MessageSender implements TimeSender
 				{
 					try
 					{
-						session.sendMessage(channelOnWhichMessageWasPosted, "The next holiday is " + holidayFinder.getNextHoliday().toString());
+						session.sendMessage(channelOnWhichMessageWasPosted, "The next holiday is " + finder.getNextHoliday().toString());
 					} catch (ParseException e)
 					{
 						// TODO Auto-generated catch block
